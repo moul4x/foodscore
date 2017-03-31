@@ -69,13 +69,14 @@ dependencies {
     profile "org.grails.profiles:angular"
     runtime "com.h2database:h2"
     runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.11.6"
+    runtime 'postgresql:postgresql:8.4-702.jdbc3'
     testCompile "org.grails:grails-plugin-testing"
     testCompile "org.grails.plugins:geb"
     testCompile "org.grails:grails-datastore-rest-client"
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
 
-    //provided "org.springframework.boot:spring-boot-starter-tomcat"
+    provided "org.springframework.boot:spring-boot-starter-tomcat"
 }
 
 bootRun {
@@ -139,6 +140,17 @@ assets {
             ]
     ]*/
 }
+
+task stage() {
+    dependsOn clean, war
+}
+tasks.stage.doLast() {
+    delete fileTree(dir: "build/distributions")
+    delete fileTree(dir: "build/assetCompile")
+    delete fileTree(dir: "build/distributions")
+    delete fileTree(dir: "build/libs", exclude: "*.war")
+}
+war.mustRunAfter clean
 
 //task stage {
     //dependsOn installDist
