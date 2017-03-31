@@ -1,0 +1,55 @@
+<div>
+    <div class="col col-12">
+        <div class="form-group h3">
+            <label class="control-label">
+                {{::detailsMenuController.menu.date | date:'dd/MM/yyyy'}} -
+                {{::detailsMenuController.menu.typeMenu.libelle}}
+            </label>
+        </div>
+    </div>
+    <div class="col col-lg-2"></div>
+    <div class="col col-lg-8">
+        <div class="col col-lg-2">
+            <div class="h3">
+                <button class="btn btn-lg bg-dark" ng-click="detailsMenuController.goToMenus()">Retour menus</button>
+            </div>
+        </div>
+        <div class="col col-lg-8">
+            <form>
+                <div class="form-group">
+                    <button class="btn btn-warning" ng-click="detailsMenuController.save()">Sauvegarder</button>
+                </div>
+                <div class="form-group form-inline">
+                    <select placeholder="nouvelAliment" id="autocomplete" class="form-control">
+                        <option ng-repeat="aliment in detailsMenuController.aliments" value="{{aliment.id}}">{{aliment.libelle}} - {{aliment.quantite}}{{aliment.unite.libelle}} - {{aliment.points}} pts</option>
+                    </select>
+                    <button type="button" class="btn btn-success fa fa-plus" ng-click="detailsMenuController.ajouterAliment()"></button>
+                </div>
+                <br/>
+                <div class="form-group form-inline text-nowrap" ng-repeat="menuAliment in detailsMenuController.menu.menusAliments">
+                    <div class="col col-sm-8 text-left" style="overflow:hidden"
+                    title="{{menuAliment.aliment.libelle}} - {{menuAliment.aliment.quantite}}{{menuAliment.aliment.unite.libelle}} - {{menuAliment.aliment.points}} pts">
+                        {{menuAliment.aliment.libelle}} - {{menuAliment.aliment.quantite}}{{menuAliment.aliment.unite.libelle}} - {{menuAliment.aliment.points}} pts
+                    </div>
+                    <div class="col col-sm-1">
+                        x
+                    </div>
+                    <div class="col col-sm-3">
+                        <input class="form-control input-sm" style="width:80px" type="number" step="0.25"
+                               ng-model="menuAliment.coefficient"/>
+                            <span class="fa fa-trash" style="cursor: pointer" ng-click="detailsMenuController.supprimerAliment(menuAliment)"></span>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="col col-lg-2">
+            <div class="h3">
+                <label class="control-label ssv-big-bold-label">
+                    Points: {{detailsMenuController.totalPoints}}
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="col col-lg-2"></div>
+</div>

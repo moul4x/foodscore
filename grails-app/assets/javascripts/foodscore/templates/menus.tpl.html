@@ -1,0 +1,29 @@
+<div class="col col-lg-12">
+    <br/>
+    <div class="col col-lg-1"><button class="btn btn-primary fa fa-arrow-circle-left fa-3x" ng-click="menuController.previousWeek();"></button></div>
+    <div class="col col-lg-10">
+        <table class="table-bordered table">
+            <thead>
+                <th></th>
+                <th class="cell text-nowrap" ng-class="{'current-day': date == menuController.today}" ng-repeat="date in menuController.joursSemaine">
+                    <div>{{menuController.getJourLibelle(date)}} - {{date}}</div>
+                </th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="typeMenu in menuController.typesMenus">
+                <td>{{::typeMenu.libelle}}</td>
+                <td class="cell"  ng-class="{'current-day': date == menuController.today}" ng-repeat="date in menuController.joursSemaine">
+                    <case-menu menu="menuController.getMenu(date,typeMenu.id)" date="date" type-menu-id="typeMenu.id"></case-menu>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+                <td>Total</td>
+                <td class="cell text-nowrap" ng-class="{'current-day': date == menuController.today}" ng-repeat="date in menuController.joursSemaine">
+                    {{menuController.totalJour(date)}}
+                </td>
+            </tfoot>
+        </table>
+    </div>
+    <div class="col col-lg-1"><button class="btn btn-primary fa fa-arrow-circle-right fa-3x" ng-click="menuController.nextWeek();"></button></div>
+</div>

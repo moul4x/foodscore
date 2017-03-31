@@ -1,0 +1,13 @@
+<div ng-click="caseMenuController.goToMenu(menu.id)">
+   <div ng-repeat="menuAliment in menu.menusAliments" class="text-left" > <!--style="overflow: hidden; max-width: 250px"-->
+      <span
+      title="{{::menuAliment.aliment.libelle}} - {{::menuAliment.aliment.quantite}}{{::menuAliment.aliment.unite.libelle}} x{{::menuAliment.coefficient}}">
+         <span class="fa-angle-right fa" ></span> {{::menuAliment.aliment.libelle}} - {{::menuAliment.aliment.quantite}}{{::menuAliment.aliment.unite.libelle}} x{{::menuAliment.coefficient}}</span>
+   </div>
+
+   <div>
+      <span>Pts: {{caseMenuController.points}}</span>
+      <span ng-if="menu" class="fa fa-pencil" style="cursor: pointer" ng-click="caseMenuController.goToMenu(menu.id)"></span>
+      <span ng-if="!menu" class="fa fa-pencil" style="cursor: pointer" ng-click="caseMenuController.newMenu(date,typeMenuId)"></span>
+   </div>
+</div>

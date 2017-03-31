@@ -1,0 +1,32 @@
+
+   <div class="col col-lg-2"></div>
+   <div class="col col-lg-8">
+   <form>
+   <table >
+      <tbody>
+      <tr>
+         <td>
+            Username:
+         </td>
+         <td>
+            <input class="form-control text-input" type="text" name="username" ng-model="loginController.user.username" />
+         </td>
+      </tr>
+      <tr>
+         <td>
+            Password:
+         </td>
+         <td>
+            <input class="form-control text-input" type="password" name="password" ng-model="loginController.user.password" />
+         </td>
+      </tr>
+      <tr>
+         <td colspan="2">
+            <button type="button" class="btn btn-success" ng-click="loginController.login()">Login</button>
+         </td>
+      </tr>
+      </tbody>
+   </table>
+   </form>
+   </div>
+   <div class="col col-lg-2"></div>
