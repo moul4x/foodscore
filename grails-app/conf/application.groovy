@@ -1,8 +1,8 @@
 
 
 // Added by the Spring Security Core plugin:
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'foodscore.User'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'foodscore.UserRole'
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'foodscore.Utilisateur'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'foodscore.UtilisateurRole'
 grails.plugin.springsecurity.authority.className = 'foodscore.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/',               access: ['permitAll']],

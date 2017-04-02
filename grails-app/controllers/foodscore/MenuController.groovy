@@ -19,7 +19,7 @@ class MenuController extends RestfulController {
     def index() {
         DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy")
         DateTime dt = params.date ? formatter.parseDateTime(params.date) : new DateTime()
-        respond Menu.findAllByUserAndDateBetween(User.get(params.userId), firstDayOfWeek(dt), lastDayOfWeek(dt))
+        respond Menu.findAllByUtilisateurAndDateBetween(Utilisateur.get(params.utilisateurId), firstDayOfWeek(dt), lastDayOfWeek(dt))
     }
 
     private static DateTime firstDayOfWeek(DateTime date) {

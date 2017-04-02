@@ -9,7 +9,7 @@ import org.springframework.security.access.annotation.Secured
 @EqualsAndHashCode(includes='username')
 @ToString(includes='username', includeNames=true, includePackage=false)
 @Resource(uri = '/api/users', readOnly = false, formats = ['json', 'xml'])
-class User implements Serializable {
+class Utilisateur implements Serializable {
 
 	private static final long serialVersionUID = 1
 
@@ -22,14 +22,14 @@ class User implements Serializable {
 	boolean accountLocked
 	boolean passwordExpired
 
-	User(String username, String password) {
+    Utilisateur(String username, String password) {
 		this()
 		this.username = username
 		this.password = password
 	}
 
 	Set<Role> getAuthorities() {
-		UserRole.findAllByUser(this)*.role
+		UtilisateurRole.findAllByUtilisateur(this)*.role
 	}
 
 	def beforeInsert() {
@@ -61,6 +61,6 @@ class User implements Serializable {
 		[
 				[id: 1L, username: "saida", password: "test"],
 				[id: 2L, username: "fabien", password: "test"]
-		].collect { new User(it) }
+		].collect { new Utilisateur(it) }
 	}
 }

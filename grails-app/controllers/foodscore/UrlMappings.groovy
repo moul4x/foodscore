@@ -18,7 +18,7 @@ class UrlMappings {
 
        // "/users/$id?/jours"(resources: 'jour')
 
-        "/api/users"(resources:'user') {
+        "/api/users"(resources:'utilisateur') {
             "/menus"(resources: 'menu')
         }
 

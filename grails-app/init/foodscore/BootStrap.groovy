@@ -3,9 +3,9 @@ package foodscore
 class BootStrap {
 
     def init = { servletContext ->
-        User.bootstrap()*.save(failOnError: true, flush: true)
+        Utilisateur.bootstrap()*.save(failOnError: true, flush: true)
         Role.bootstrap()*.save(failOnError: true, flush: true)
-        UserRole.bootstrap()*.save(failOnError: true, flush: true)
+        UtilisateurRole.bootstrap()*.save(failOnError: true, flush: true)
         TypeMenu.bootstrap()*.save(failOnError: true, flush: true)
         Unite.bootstrap()*.save(failOnError: true, flush: true)
         Famille.bootstrap()*.save(failOnError: true, flush: true)
