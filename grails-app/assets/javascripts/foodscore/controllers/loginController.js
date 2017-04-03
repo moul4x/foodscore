@@ -4,7 +4,7 @@ angular
     .module("foodscore")
     .controller("LoginController", LoginController);
 
-function LoginController($location, $rootScope, $window, $http) {
+function LoginController($location, $rootScope, $window, $http, User) {
     var vm = this;
 
     vm.authenticated = false;
@@ -18,7 +18,11 @@ function LoginController($location, $rootScope, $window, $http) {
         }).then(function (response) {
             vm.authenticated = true;
             $window.sessionStorage.token = response.data.access_token;
-            $location.path('/menus');
+          //  User.get({username: response.data.username}, function(users){
+              //  var user = users[0];
+            //    $window.sessionStorage.userId = user.id;
+                $location.path('/menus');
+            //});
         });
 
        /* AuthService.login(vm.user).then(function (response) {

@@ -14,7 +14,7 @@ function DetailsMenuController(Menu, TypeMenu, Aliment, $stateParams, $location,
         // TODO: c'est moche faire dans une directive
         $( '#autocomplete' ).combobox();
     });
-    vm.typesMenus = []
+    vm.typesMenus = [];
     vm.totalPoints = 0;
 
     init();
@@ -29,7 +29,7 @@ function DetailsMenuController(Menu, TypeMenu, Aliment, $stateParams, $location,
             // NEW
                 var typeMenu = _.find(vm.typesMenus, {'id' : parseInt($stateParams.typeMenu) });
                 var user = User.get({id: 1})
-                vm.menu = new Menu({user: user, date: moment($stateParams.date,'DD/MM/YYYY').format('DD/MM/YYYY'), typeMenu: typeMenu, menusAliments : []});
+                vm.menu = new Menu({utilisateur: user, date: moment($stateParams.date,'DD/MM/YYYY').format('DD/MM/YYYY'), typeMenu: typeMenu, menusAliments : []});
             }
 
             $scope.$watch('detailsMenuController.menu.menusAliments', function(menusAliments) {
@@ -40,12 +40,12 @@ function DetailsMenuController(Menu, TypeMenu, Aliment, $stateParams, $location,
 
     vm.save = function () {
         if (!vm.menu.id) {
-            vm.menu.$save({userId: vm.menu.user.id}, function () {
+            vm.menu.$save({userId: vm.menu.utilisateur.id}, function () {
                 sweetAlert("Sauvegarde effectuée");
             });
         } else {
             vm.menu.date = moment(vm.menu.date).format('DD/MM/YYYY');
-            vm.menu.$update({userId: vm.menu.user.id}, function(){
+            vm.menu.$update({userId: vm.menu.utilisateur.id}, function(){
                 sweetAlert("Sauvegarde effectuée");
             });
         }

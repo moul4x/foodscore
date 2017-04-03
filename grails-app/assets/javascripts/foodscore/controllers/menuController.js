@@ -27,7 +27,7 @@ function MenuController(Menu, TypeMenu, $location, $stateParams) {
         }
     }
 
-    vm.menus = Menu.list({userId: 1, date: moment(new Date()).format('DD/MM/YYYY')}, function(){
+    vm.menus = Menu.list({userId: 1, date: moment(jour).format('DD/MM/YYYY')}, function(){
     });
 
     vm.getMenu = function(date, typeMenuId) {
