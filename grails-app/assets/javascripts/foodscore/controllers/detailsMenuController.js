@@ -4,7 +4,7 @@ angular
     .module("foodscore")
     .controller("DetailsMenuController", DetailsMenuController);
 
-function DetailsMenuController(Menu, TypeMenu, Aliment, $stateParams, $location, User, $scope) {
+function DetailsMenuController(Menu, TypeMenu, Aliment, $stateParams, $location, User, $scope, $window) {
 
     var vm = this;
 
@@ -24,11 +24,11 @@ function DetailsMenuController(Menu, TypeMenu, Aliment, $stateParams, $location,
             vm.typesMenus = list;
             // UPDATE
             if ($stateParams.id) {
-                vm.menu = Menu.get({userId: 1, id: $stateParams.id});
+                vm.menu = Menu.get({userId: $window.sessionStorage.userId, id: $stateParams.id});
             } else {
             // NEW
                 var typeMenu = _.find(vm.typesMenus, {'id' : parseInt($stateParams.typeMenu) });
-                var user = User.get({id: 1})
+                var user = User.get({id: $window.sessionStorage.userId})
                 vm.menu = new Menu({utilisateur: user, date: moment($stateParams.date,'DD/MM/YYYY').format('DD/MM/YYYY'), typeMenu: typeMenu, menusAliments : []});
             }
 

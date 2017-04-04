@@ -27,6 +27,13 @@ angular.module('foodscore', [
     })
     .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
+     /*   var $http = $injector.get('$http');
+        var $interval = $injector.get('$interval');
+        $interval(function() {
+            console.log("keep alive");
+            $http.get("http://foodscore.herokuapp.com");
+        }, 3000); // every 5 minutes (300000)*/
+
     // function to check the authentication //
     /*var Auth = ["$q", "authService", function ($q, authService) {
         authService.fillAuthData;

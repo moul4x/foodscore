@@ -4,7 +4,7 @@ angular
     .module("foodscore")
     .controller("MenuController", MenuController);
 
-function MenuController(Menu, TypeMenu, $location, $stateParams) {
+function MenuController(Menu, TypeMenu, $location, $stateParams, $window) {
 
     moment.locale('fr');
 
@@ -27,7 +27,7 @@ function MenuController(Menu, TypeMenu, $location, $stateParams) {
         }
     }
 
-    vm.menus = Menu.list({userId: 1, date: moment(jour).format('DD/MM/YYYY')}, function(){
+    vm.menus = Menu.list({userId: $window.sessionStorage.userId, date: moment(jour).format('DD/MM/YYYY')}, function(){
     });
 
     vm.getMenu = function(date, typeMenuId) {

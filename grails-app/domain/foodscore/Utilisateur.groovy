@@ -8,7 +8,6 @@ import org.springframework.security.access.annotation.Secured
 @Secured(['ROLE_USER'])
 @EqualsAndHashCode(includes='username')
 @ToString(includes='username', includeNames=true, includePackage=false)
-@Resource(uri = '/api/users', readOnly = false, formats = ['json', 'xml'])
 class Utilisateur implements Serializable {
 
 	private static final long serialVersionUID = 1
