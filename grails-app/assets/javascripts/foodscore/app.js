@@ -50,7 +50,7 @@ angular.module('foodscore', [
 
     $stateProvider
         .state('login', {
-            url: '/login',
+            url: '/login?logout',
             templateUrl: '/foodscore/login.html',
             controller: 'LoginController as loginController'
         })

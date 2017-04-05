@@ -14,7 +14,14 @@
 * require_self
 */
 
-.current-day{
+.current-day {
     background-color: #269abc;
+}
 
+.cell-days {
+    background-color: #ff8533;
+}
+
+.cell-content {
+    /*background-color: #ff8533;*/
 }

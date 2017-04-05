@@ -4,11 +4,16 @@ angular
     .module("foodscore")
     .controller("LoginController", LoginController);
 
-function LoginController($location, $rootScope, $window, $http, User) {
+function LoginController($location, $rootScope, $window, $http, User, $stateParams) {
     var vm = this;
 
     vm.authenticated = false;
     vm.user = {};
+
+    if($stateParams.logout === 'true'){
+        $window.sessionStorage.token = null;
+        $window.sessionStorage.userId = null;
+    }
 
     vm.login = function () {
 
@@ -21,17 +26,8 @@ function LoginController($location, $rootScope, $window, $http, User) {
             User.list({username: response.data.username}, function(users){
                 var user = users[0];
                 $window.sessionStorage.userId = user.id
-                $location.path('/menus');
+                $location.path('/menus').search({});
             });
         });
-
-       /* AuthService.login(vm.user).then(function (response) {
-            console.log(response);
-            if(response != null) {
-                $window.sessionStorage.token = response.access_token;
-                $rootScope.$broadcast('auth-login-success');
-                $location.path('/menus');
-            }
-        });*/
     };
 }

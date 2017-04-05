@@ -67,6 +67,9 @@
                 <li>
                     <a  href="#/aliments">Aliments</a>
                 </li>
+                <li>
+                    <a  href="#/login?logout=true">Déconnexion</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
